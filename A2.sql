@@ -2,7 +2,7 @@
 
 */
 CREATE TABLE Artifacts (
-    id              INT,
+    id              INT PRIMARY KEY,
     title           VARCHAR(40),
     description     VARCHAR(60),
     value           INT,
@@ -13,18 +13,18 @@ CREATE TABLE Artifacts (
 )
 
 CREATE TABLE ArticactPaintings(
-    id              INT,
+    id              INT PRIMARY KEY,
     canvas          VARCHAR(30)
 )
 
 CREATE TABLE ArticactSculptures(
-    id              INT,
+    id              INT PRIMARY KEY,
     material        VARCHAR(30),
     color           VARCHAR(30)
 )
 
 CREATE TABLE Artists(
-    id              INT,
+    id              INT PRIMARY KEY,
     name            VARCHAR(30),
     birthDate       DATE,
     deathDate       DATE,
@@ -32,12 +32,12 @@ CREATE TABLE Artists(
 )
 
 CREATE TABLE Collections(
-    title           VARCHAR(40),
+    title           VARCHAR(40) PRIMARY KEY,
     topic           VARCHAR(40)
 )
 
 CREATE TABLE Exhibitions(
-    title           VARCHAR(40),
+    title           VARCHAR(40) PRIMARY KEY,
     topic           VARCHAR(40),
     room            VARCHAR(15),
     startDate       DATE,
@@ -49,20 +49,23 @@ CREATE TABLE Advertisements(
     date            DATE,
     mediumName      VARCHAR(40),
     cost            FLOAT,
-    duration        INT     
+    duration        INT,
+    PRIMARY KEY (exhibitionTitle, date, mediumName)     
 )
 
 CREATE TABLE Media(
-    name            VARCHAR(40), 
+    name            VARCHAR(40) PRIMARY KEY, 
     type            VARCHAR(40)
 )
 
 CREATE TABLE InfluencedBy(
     influenceeId    VARCHAR(30),
-    influencerId    VARCHAR(30)
+    influencerId    VARCHAR(30),
+    PRIMARY KEY (influenceeId, influencerId)
 )
 
 CREATE TABLE ExhibitedAt(
     artifactId      INT,
-    exhibitionTitle VARCHAR(40)
+    exhibitionTitle VARCHAR(40),
+    PRIMARY KEY (artifactId, exhibitionTitle)
 )
