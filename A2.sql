@@ -1,48 +1,48 @@
 /*
-
+    TASK 1
 */
 CREATE TABLE Artifacts (
     id              INT PRIMARY KEY,
     title           VARCHAR(40),
     description     VARCHAR(60),
     value           INT,
-    year            DATE,
+    year            INT,
     artistId        INT,
     collectionTitle VARCHAR(40),
     collectionDate  DATE
-)
+);
 
-CREATE TABLE ArticactPaintings(
+CREATE TABLE ArtifactPaintings(
     id              INT PRIMARY KEY,
     canvas          VARCHAR(30)
-)
+);
 
-CREATE TABLE ArticactSculptures(
+CREATE TABLE ArtifactSculptures(
     id              INT PRIMARY KEY,
     material        VARCHAR(30),
     color           VARCHAR(30)
-)
+);
 
 CREATE TABLE Artists(
     id              INT PRIMARY KEY,
-    name            VARCHAR(30),
+    name            VARCHAR(30) NOT NULL, 
     birthDate       DATE,
     deathDate       DATE,
     bio             VARCHAR(100)
-)
+);
 
 CREATE TABLE Collections(
     title           VARCHAR(40) PRIMARY KEY,
     topic           VARCHAR(40)
-)
+);
 
 CREATE TABLE Exhibitions(
     title           VARCHAR(40) PRIMARY KEY,
     topic           VARCHAR(40),
-    room            VARCHAR(15),
+    room            VARCHAR(15) NOT NULL,
     startDate       DATE,
     endDate         DATE
-)
+);
 
 CREATE TABLE Advertisements(
     exhibitionTitle VARCHAR(40),
@@ -51,21 +51,21 @@ CREATE TABLE Advertisements(
     cost            FLOAT,
     duration        INT,
     PRIMARY KEY (exhibitionTitle, date, mediumName)     
-)
+);
 
 CREATE TABLE Media(
     name            VARCHAR(40) PRIMARY KEY, 
     type            VARCHAR(40)
-)
+);
 
 CREATE TABLE InfluencedBy(
     influenceeId    VARCHAR(30),
     influencerId    VARCHAR(30),
     PRIMARY KEY (influenceeId, influencerId)
-)
+);
 
 CREATE TABLE ExhibitedAt(
     artifactId      INT,
     exhibitionTitle VARCHAR(40),
     PRIMARY KEY (artifactId, exhibitionTitle)
-)
+);
