@@ -5,7 +5,7 @@ CREATE TABLE Artifacts (
     id              INT PRIMARY KEY,
     title           VARCHAR(40),
     description     VARCHAR(60),
-    value           INT,
+    value           FLOAT,
     year            INT,
     artistId        INT,
     collectionTitle VARCHAR(40),
@@ -69,3 +69,39 @@ CREATE TABLE ExhibitedAt(
     exhibitionTitle VARCHAR(40),
     PRIMARY KEY (artifactId, exhibitionTitle)
 );
+
+/*
+    TASK 2
+*/
+-- 1. exchange rate on May 4 
+SELECT          title, (value*1.12) AS value_in_USD
+FROM            Artifacts
+WHERE           value < 11
+ORDER BY        value;
+
+-- 2. 
+SELECT DISTINCT collectionTitle
+FROM            Artifacts
+WHERE           title LIKE '%sun%';
+
+-- 3. 
+SELECT          COUNT(exhibitionTitle) AS quantity
+FROM            Advertisements
+WHERE           exhibitionTitle = 'Dutch painters' AND mediumName = 'Daily Planet';
+
+-- 4. TODO
+SELECT          InfluencerId
+FROM            InfluencedBy
+GROUP BY        InfluencerId
+HAVING          COUNT(*) > 9;
+
+-- 5.
+SELECT          mediumName, AVG(cost) AS average_cost
+FROM            Advertisements
+GROUP BY        mediumName;
+
+-- 6.
+SELECT          title, topic
+FROM            Exhibitions
+WHERE           startDate >= '20170601 00:00:00.000'
+                AND endDate < '20171231 23:59:59.000';
