@@ -76,7 +76,7 @@ CREATE TABLE ExhibitedAt(
 -- 1. exchange rate on May 4 
 SELECT          title, (value*1.12) AS value_in_USD
 FROM            Artifacts
-WHERE           value < 11
+WHERE           value > 100000
 ORDER BY        value;
 
 -- 2. 
@@ -89,7 +89,7 @@ SELECT          COUNT(exhibitionTitle) AS quantity
 FROM            Advertisements
 WHERE           exhibitionTitle = 'Dutch painters' AND mediumName = 'Daily Planet';
 
--- 4. TODO
+-- 4.  ihr sollt auch die influencee mitzählen und ausgeben -7
 SELECT          InfluencerId
 FROM            InfluencedBy
 GROUP BY        InfluencerId
@@ -103,5 +103,5 @@ GROUP BY        mediumName;
 -- 6.
 SELECT          title, topic
 FROM            Exhibitions
-WHERE           startDate >= '20170601 00:00:00.000'
-                AND endDate < '20171231 23:59:59.000';
+WHERE           startDate >= '2017-06-01'
+                AND endDate < '2017-12-31';
