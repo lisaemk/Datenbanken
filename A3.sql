@@ -4,12 +4,12 @@
 CREATE TABLE Artifacts (
     id              INT PRIMARY KEY,
     title           VARCHAR(40),
-    description     VARCHAR(60),
+    description     TEXT,
     value           FLOAT,
-    year            INT,
+    year            YEAR,
     artistId        INT,
-    collectionTitle VARCHAR(40),
-    collectionDate  DATE
+    collectionTitle VARCHAR(40) NOT NULL,
+    collectionDate  DATE NOT NULL
 );
 
 CREATE TABLE ArtifactPaintings(
@@ -28,7 +28,7 @@ CREATE TABLE Artists(
     name            VARCHAR(30) NOT NULL, 
     birthDate       DATE,
     deathDate       DATE,
-    bio             VARCHAR(100)
+    bio             TEXT
 );
 
 CREATE TABLE Collections(
@@ -55,12 +55,12 @@ CREATE TABLE Advertisements(
 
 CREATE TABLE Media(
     name            VARCHAR(40) PRIMARY KEY, 
-    type            VARCHAR(40)
+    type            ENUM
 );
 
 CREATE TABLE InfluencedBy(
-    influenceeId    VARCHAR(30),
-    influencerId    VARCHAR(30),
+    influenceeId    INT,
+    influencerId    INT,
     PRIMARY KEY (influenceeId, influencerId)
 );
 
