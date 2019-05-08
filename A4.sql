@@ -1,0 +1,7 @@
+-- 1. What is the total cost for advertising per exhibition in newspapers?
+-- 2. Which artifacts (their id) have never been part of an exhibition?
+-- 3. Increase by 10% the value of sculptures with color either ‘white’ or ‘green’.
+-- 4. Which percentage of paintings are currently in some exhibition?
+-- 5. Display artists (their id) that have been influenced by at most 2 other artists; display the number of influences. Remember to include artists with no influences.
+-- 6. Move upcoming exhibitions that include paintings from ‘Vincent Van Gogh’ to room ‘03-500’.
+-- 7. Which sculptures (their ids) were part of some exhibition in 2018?
