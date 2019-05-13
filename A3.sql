@@ -89,11 +89,11 @@ SELECT          COUNT(exhibitionTitle) AS quantity
 FROM            Advertisements
 WHERE           exhibitionTitle = 'Dutch painters' AND mediumName = 'Daily Planet';
 
--- 4.  ihr sollt auch die influencee mitzählen und ausgeben -7
-SELECT          InfluencerId
+-- 4.
+SELECT          InfluencerId, COUNT(*)
 FROM            InfluencedBy
 GROUP BY        InfluencerId
-HAVING          COUNT(*) > 9;
+HAVING          COUNT(*) > 10;
 
 -- 5.
 SELECT          mediumName, AVG(cost) AS average_cost
