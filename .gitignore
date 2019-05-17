@@ -32,6 +32,8 @@
 *.mtc
 *.mtc1
 *.out
+*.fls
+*.fdb_latexmk
 *.synctex.gz
 
 # User-specific files (MonoDevelop/Xamarin Studio)
