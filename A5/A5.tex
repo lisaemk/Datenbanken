@@ -1,0 +1,83 @@
+\documentclass{article}
+\usepackage{parskip}
+\usepackage{ngerman}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\usepackage{qtree}
+\usepackage{blindtext}
+\setlength{\parskip}{0.7cm}
+
+\begin{document}
+\section{Task}
+\par 1. Retrieve the title and the creator name of all artifacts with value over 10000 Euros.
+$$Answer(name, title, id) := \pi_{name, id}(Artists) \bowtie \rho_{artistId \rightarrow id}(\pi_{title, artistId}(\sigma_{value>1000}(Artifacts)))$$
+\par 2. Name all exhibitions where paintings from the ‘Dutch painters’ collection were exhibited.
+$$Art(id) := \pi_{id}(\sigma_{collectionTitle = 'Dutch Paintings'}(Artifacts)) \cap \pi_{id}(ArtifactsPaintings)$$
+$$Answer(exhibitionTitle) := \pi_{exhibitionTitle}(ExhibitedAt\bowtie Art)$$
+\par 3. Name artists who influenced others but had no influences.
+$$Influencer(id) := \rho_{influencerId \rightarrow id}(\pi_{influencerId}(influencedBy)$$
+$$Influencee(id) := \rho_{influenceeId \rightarrow id}(\pi_{influenceeId}(influencedBy))$$
+$$Answer(name) := \pi_{name}((Influencer \setminus Influencee)\bowtie (Artists)))$$
+\par 4. Which newspapers have advertised exhibitions where paintings in oil canvas and marble sculptures were shown. \newline 
+We assume the task is to display exhibitions where both Artifact types are advertised together.
+$$Oil(artifactsId) := \rho_{id \rightarrow artifactsId}(\pi_{id}(\sigma_{canvas = 'oil'}(ArtifactsPaintings)))$$
+$$Marble(artifactsId) := \rho_{id \rightarrow artifactsId}(\pi_{id}(\sigma_{material = 'marble'}(ArtifactsSculptures)))$$
+$$Ex(exhibitionTitle) := \pi_{exhibitionTitle}(ExhibitedAt \bowtie Oil) \cap \pi_{exhibitionTitle}(ExhibitedAt \bowtie Marble)$$
+$$News(mediumName) := \rho_{name \rightarrow mediumName}(\pi_{name}(\sigma_{type = 'newspaper'}(Media)))$$
+$$Answer(mediumName) := \pi_{mediumName}(Advertisements \bowtie Ex) \cap News$$
+
+\newpage
+\section{Task}
+\par a) Retrieve the artifactsname and exhibitionstitle of all artifacts with value over 1000 Euro that were part of an exhibition advertised on the 'Daily Planet'.
+\par b) 
+\Tree   [ 
+            .$\pi_{title, exhibitionTitle}$ 
+            [   
+                .$\sigma_{value>1000 \land mediumName='DailyPlanet'}$ 
+                [
+                    .$\bowtie$
+                    Artifacts
+                    [
+                        .$\bowtie$
+                        [
+                            .$\rho_{ArtifactId \rightarrow id}$
+                            ExhibitedAt
+                        ]
+                        Advertisements
+                    ]
+                ]
+            ]
+        ]
+\par c) 
+start expression
+$$\pi_{title, exhibitionTitle}(\sigma_{value>1000 \land mediumname='DailyPlanet'}(Artifacts \bowtie (\rho_{artifactId \leftarrow id }(ExhibitedAt) \bowtie Advertisements))$$
+splitting sigma
+$$\pi_{title, exhibitionTitle}(\sigma_{value>1000}(\sigma_{mediumname='DailyPlanet'}((Artifacts \bowtie (\rho_{artifactId \leftarrow id }(ExhibitedAt) \bowtie Advertisements)))$$
+push selection down
+$$\pi_{title, exhibitionTitle}(\sigma_{value>1000}(Artifacts) \bowtie (\rho_{artifactId \leftarrow id }(ExhibitedAt) \bowtie \sigma_{mediumname='DailyPlanet'} (Advertisements)))$$
+order joins by size:
+$$\pi_{title, exhibitionTitle}((\sigma_{value>1000}(Artifacts) \bowtie \rho_{artifactId \leftarrow id }(ExhibitedAt)) \bowtie \sigma_{mediumname='DailyPlanet'}(Advertisements))$$
+cannot push projections down, because the join needs the other attributes and after the join we would have to project again
+
+\Tree   [ 
+            .$\pi_{title, exhibitionTitle}$ 
+            [   
+                .$\bowtie$
+                [
+                    .$\bowtie$
+                    [
+                        .$\sigma_{value>1000}$ 
+                        Artifacts
+                    ]
+                    [
+                        .$\rho_{ArtifactId \rightarrow id}$
+                        ExhibitedAt
+                    ]
+                ]
+                [
+                    .$\sigma_{mediumName='DailyPlanet'}$
+                    Advertisements
+                ]
+            ]
+        ]
+\end{document}
