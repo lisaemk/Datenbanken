@@ -39,7 +39,53 @@ $\Rightarrow keys: \{b, d\}, \{b, c\}$
 $R(a, b, c, d)$ with $F_{R} = \{ ab \rightarrow c, c \rightarrow d, d \rightarrow a \}$ \newline
 $S(a, b, c, d)$ with $F_{R} = \{ a \rightarrow b, b \rightarrow c, b \rightarrow d \}$
 
+$R^{+} = \{ 
+            ab \rightarrow a,
+            ab \rightarrow c,
+            ab \rightarrow d,
+            c \rightarrow a,
+            c \rightarrow d,
+            cd \rightarrow d,
+            d \rightarrow a
+        \}$
 
+$S^{+} = \{
+            a \rightarrow b,
+            a \rightarrow c, 
+            a \rightarrow d, 
+            b \rightarrow c, 
+            b \rightarrow d
+        \}$
+\newpage
 \section{Task}
+$R(a, b, c, d)$ with $F = \{ ab \rightarrow c, bc \rightarrow d, b \rightarrow d, ad \rightarrow b \}$\newline
+$R_{1}(a, b, c)$  \newline
+$R_{2}(b, d)$ \newline
+$R_{3}(a, b, c)$ \newline
+$R_{4}(a, b, d)$ \newline
+
+\begin{enumerate}
+    \item 
+    $R_{1} \cap R_{2} = b$ \newline
+    $b^{+} = \{b, d\} = R_{2} \Rightarrow $ lossless
+
+    $F_{1} = \{ab \rightarrow c\}$ \newline
+    $F_{2} = \{b \rightarrow d\}$ \newline
+    $(F_{1} \cup F_{2})^{+} = $
+    $\Rightarrow$ not dependency preserving
+    \item 
+    $R_{3} \cap R_{4} = b$ \newline
+    $b^{+} = \{b, d\} \neq R_{3}$ \newline
+    $b^{+} = \{b, d\} \neq R_{4} \Rightarrow $ lossy
+
+    $F_{3} = \{ab \rightarrow c\}$ \newline
+    $F_{4} = \{b \rightarrow d, ad \rightarrow b \}$ \newline
+    $(F_{3} \cup F_{4})^{+} 
+    = (\{ab \rightarrow c\} \cup \{b \rightarrow d, ad \rightarrow b \})^{+} 
+    = (\{ab \rightarrow c, b \rightarrow d, ad \rightarrow b , bc \rightarrow d\} )^{+} 
+    = F^{+}$ \newline
+    $ \Rightarrow(F_{3} \cup F_{4})^{+} = F^{+}$
+    $\Rightarrow$ dependency preserving
+\end{enumerate}
 
 \end{document}
