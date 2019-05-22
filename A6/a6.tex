@@ -6,5 +6,39 @@
 
 \begin{document}
 \section{Task}
+\par Given: \newline
+$R(a, b, c, d, e)$ \newline
+$F = \{  
+        a \rightarrow c,
+        bc \rightarrow d,
+        d \rightarrow a,
+        b \rightarrow e
+    \}$
+\par
+$a^{+} = \{a, c \}$ \newline
+$b^{+} = \{b, e \}$ \newline
+$c^{+} = \{c \}$ \newline
+$d^{+} = \{a, c, d \}$ \newline
+$e^{+} = \{e \}$ \newline
+$\Rightarrow$ no key: try subsets with two attributes
+
+\par
+$ab^{+} = \{a, b, c, e \}$ \newline
+$ac^{+} = \{a, c \}$ \newline
+$ad^{+} = \{a, c, d \}$ \newline
+$ae^{+} = \{a, c, e \}$ \newline
+$bc^{+} = \{b, c, e \}$ \newline
+$bd^{+} = \{a, b, c, d, e \}$ \newline
+$be^{+} = \{b, e \}$ \newline
+$cd^{+} = \{a, c, d \}$ \newline
+$ce^{+} = \{c, e \}$ \newline
+$de^{+} = \{a, c, d, e \}$ \newline
+$\Rightarrow \{b, d\}$ is the only key
+
+\section{Task}
+$R(a, b, c, d)$ with $F_{R} = \{ ab \rightarrow c, c \rightarrow d, d \rightarrow a \}$ \newline
+$S(a, b, c, d)$ with $F_{R} = \{ a \rightarrow b, b \rightarrow c, b \rightarrow d \}$
+
+\section{Task}
 
 \end{document}
