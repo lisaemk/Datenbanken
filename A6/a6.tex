@@ -33,32 +33,50 @@ $be^{+} = \{b, e \}$ \newline
 $cd^{+} = \{a, c, d \}$ \newline
 $ce^{+} = \{c, e \}$ \newline
 $de^{+} = \{a, c, d, e \}$ \newline
-$\Rightarrow keys: \{b, d\}, \{b, c\}$ 
+$\Rightarrow keys: \{a, b\}, \{b, c\}, \{b, d\}$ 
 
 \section{Task}
 $R(a, b, c, d)$ with $F_{R} = \{ ab \rightarrow c, c \rightarrow d, d \rightarrow a \}$ \newline
 $S(a, b, c, d)$ with $F_{R} = \{ a \rightarrow b, b \rightarrow c, b \rightarrow d \}$
 
 $R^{+} = \{ 
-            ab \rightarrow a,
-            ab \rightarrow c,
+            ab \rightarrow c, 
             ab \rightarrow d,
+            abc \rightarrow d,
+            abd \rightarrow c,
+            ac \rightarrow d,
+            bc \rightarrow a,
+            bc \rightarrow d,
+            bcd \rightarrow a,
+            bd \rightarrow a,
             c \rightarrow a,
-            c \rightarrow d,
-            cd \rightarrow d,
-            d \rightarrow a
+            c \rightarrow d, 
+            cd \rightarrow a,
+            d \rightarrow a 
         \}$
 
 $S^{+} = \{
-            a \rightarrow b,
+            a \rightarrow b, *
             a \rightarrow c, 
             a \rightarrow d, 
-            b \rightarrow c, 
-            b \rightarrow d
+            ab \rightarrow c, 
+            ab \rightarrow d, 
+            abc \rightarrow d, 
+            abd \rightarrow c, 
+            acd \rightarrow b, 
+            ac \rightarrow b, 
+            ac \rightarrow d, 
+            ad \rightarrow b, 
+            ad \rightarrow c, 
+            b \rightarrow c, *
+            b \rightarrow d *
+            bc \rightarrow d
+            bd \rightarrow c
         \}$
+
 \newpage
 \section{Task}
-$R(a, b, c, d)$ with $F = \{ ab \rightarrow c, bc \rightarrow d, b \rightarrow d, ad \rightarrow b \}$\newline
+$R(a, b, c, d)$ with $F = \{ ab \rightarrow c, bc \rightarrow d, b \rightarrow d, ad \rightarrow b \}$ \newline
 $R_{1}(a, b, c)$  \newline
 $R_{2}(b, d)$ \newline
 $R_{3}(a, b, c)$ \newline
@@ -66,17 +84,16 @@ $R_{4}(a, b, d)$ \newline
 
 \begin{enumerate}
     \item 
-    $R_{1} \cap R_{2} = b$ \newline
+    $R_{1} \cap R_{2} = \{b\}$ \newline
     $b^{+} = \{b, d\} = R_{2} \Rightarrow $ lossless
 
     $F_{1} = \{ab \rightarrow c\}$ \newline
     $F_{2} = \{b \rightarrow d\}$ \newline
-    $(F_{1} \cup F_{2})^{+} = $
-    $\Rightarrow$ not dependency preserving
+    $(F_{1} \cup F_{2})^{+} = \{ab \rightarrow c, bc \rightarrow d, b \rightarrow d\}$ \newline
+    $\Rightarrow$ not dependency preserving, $ad \rightarrow b$ missing
     \item 
-    $R_{3} \cap R_{4} = b$ \newline
-    $b^{+} = \{b, d\} \neq R_{3}$ \newline
-    $b^{+} = \{b, d\} \neq R_{4} \Rightarrow $ lossy
+    $R_{3} \cap R_{4} = \{a, b\}$ \newline
+    $ab^{+} = \{a, b, c\} = R_{3} \Rightarrow $ lossless
 
     $F_{3} = \{ab \rightarrow c\}$ \newline
     $F_{4} = \{b \rightarrow d, ad \rightarrow b \}$ \newline
@@ -84,7 +101,7 @@ $R_{4}(a, b, d)$ \newline
     = (\{ab \rightarrow c\} \cup \{b \rightarrow d, ad \rightarrow b \})^{+} 
     = (\{ab \rightarrow c, b \rightarrow d, ad \rightarrow b , bc \rightarrow d\} )^{+} 
     = F^{+}$ \newline
-    $ \Rightarrow(F_{3} \cup F_{4})^{+} = F^{+}$
+    $\Rightarrow(F_{3} \cup F_{4})^{+} = F^{+}$
     $\Rightarrow$ dependency preserving
 \end{enumerate}
 
