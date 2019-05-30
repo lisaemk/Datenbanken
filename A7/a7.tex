@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage{parskip}
+\usepackage[utf8]{inputenc}
+\usepackage{fullpage}
+\setlength{\parskip}{0.1cm}
+\usepackage{titlesec}
+
+\titlespacing*{\section}{0pt}{6pt}{-15pt}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+
+\begin{document}
+\section{BNCF}
+\subsection*{} $R(a, b, c, d)$ with functional dependencies
+    $\{ab \rightarrow c, c \rightarrow d, d \rightarrow a\}$
+\begin{enumerate}
+    \item Is the relation in BCNF? if not then outline all BCNF violations 
+        \begin{itemize}
+            \item only valid fds
+            \item b has to be part of the key, as it is in none of the fd as a result
+            \item $ab^{+} = \{a, b, c, d\} \Rightarrow superkey \Rightarrow$ no violation
+            \item c cant be a superkey $\Rightarrow violation$
+            \item d cant be a superkey $\Rightarrow violation$
+        \end{itemize} 
+    \item Decompose the relation using the BCNF decomposition
+        \begin{itemize}
+            \item for c: $c^{+} = \{a, d\} \Rightarrow R_{1}(a, c, d)$ and $R_{2}(a, b, c)$
+            \item for d in $R_{1}$: $d^{+} = \{a\} \Rightarrow R_{1.1}(a, d)$ and $R_{1.2}(c, d)$
+        \end{itemize}
+\end{enumerate}
+$\Rightarrow R_{1}(a, d), R_{2}(c, d), R_{3}(a, b, c)$
+
+\subsection*{} $S(a, b, c, d, e)$ with functional dependencies
+    $\{ab \rightarrow c, c \rightarrow d, d \rightarrow b, d \rightarrow e\}$
+\begin{enumerate}
+    \item Is the relation in BCNF? if not then outline all BCNF violations
+        \begin{itemize}
+            \item only valid fds
+            \item a has to be part of the key, as it is in none of the fd as a result
+            \item $ab^{+} = \{a, b, c, d, e\} \Rightarrow superkey \Rightarrow$ no violation
+            \item c cant be a superkey $\Rightarrow violation$
+            \item d cant be a superkey $\Rightarrow violation$
+        \end{itemize}
+    \item Decompose the relation using the BCNF decomposition
+        \begin{itemize}
+            \item for c: $c^{+} = \{b, d, e\} \Rightarrow R_{1}(b, c, d, e)$ and $R_{2}(a, c)$
+            \item for d in $R_{1}$: $d^{+} = \{b, e\} \Rightarrow R_{1.1}(b, d, e)$ and $R_{1.2}(c, d)$
+        \end{itemize}
+\end{enumerate}
+$\Rightarrow R_{1}(b, d, e), R_{2}(c, d), R_{3}(a, c)$
+
+\section{3NF}
+\subsection*{} $R(a, b, c, d)$ with set of functional dependencies $\{b \rightarrow c, b \rightarrow d\}$
+\begin{enumerate}
+    \item Is the relation in 3NF?
+    
+    \item If not, provide a decomposition into collections of relations that are in 3NF.
+\end{enumerate}
+
+\subsection*{} $S(a, b, c, d, e)$ with set of functional dependencies $\{ab \rightarrow c, d \rightarrow c, b \rightarrow de, c \rightarrow d\}$
+\begin{enumerate}
+    \item Is the relation in 3NF?
+    \item If not, provide a decomposition into collections of relations that are in 3NF.
+\end{enumerate}
+
+\end{document}
