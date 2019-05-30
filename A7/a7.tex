@@ -1,12 +1,12 @@
 \documentclass{article}
 \usepackage{parskip}
 \usepackage[utf8]{inputenc}
-\usepackage{fullpage}
-\setlength{\parskip}{0.1cm}
 \usepackage{titlesec}
-
+\usepackage[a4paper,top=2cm, bottom=2cm]{geometry}
+\pagestyle{empty}
+\setlength{\parskip}{0.1cm}
 \titlespacing*{\section}{0pt}{6pt}{-15pt}
-\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{0pt}{-5pt}
 
 \begin{document}
 \section{BNCF}
@@ -26,8 +26,8 @@
             \item for c: $c^{+} = \{a, d\} \Rightarrow R_{1}(a, c, d)$ and $R_{2}(a, b, c)$
             \item for d in $R_{1}$: $d^{+} = \{a\} \Rightarrow R_{1.1}(a, d)$ and $R_{1.2}(c, d)$
         \end{itemize}
+    $\Rightarrow R_{1}(a, d), R_{2}(c, d), R_{3}(a, b, c)$
 \end{enumerate}
-$\Rightarrow R_{1}(a, d), R_{2}(c, d), R_{3}(a, b, c)$
 
 \subsection*{} $S(a, b, c, d, e)$ with functional dependencies
     $\{ab \rightarrow c, c \rightarrow d, d \rightarrow b, d \rightarrow e\}$
@@ -45,23 +45,44 @@ $\Rightarrow R_{1}(a, d), R_{2}(c, d), R_{3}(a, b, c)$
             \item for c: $c^{+} = \{b, d, e\} \Rightarrow R_{1}(b, c, d, e)$ and $R_{2}(a, c)$
             \item for d in $R_{1}$: $d^{+} = \{b, e\} \Rightarrow R_{1.1}(b, d, e)$ and $R_{1.2}(c, d)$
         \end{itemize}
+    $\Rightarrow R_{1}(b, d, e), R_{2}(c, d), R_{3}(a, c)$
 \end{enumerate}
-$\Rightarrow R_{1}(b, d, e), R_{2}(c, d), R_{3}(a, c)$
 
 \section{3NF}
 \subsection*{} $R(a, b, c, d)$ with set of functional dependencies $\{b \rightarrow c, b \rightarrow d\}$
 \begin{enumerate}
     \item Is the relation in 3NF?
         \begin{itemize}
-            \item 
+            \item is not in 3NF
+            \item $\{a, b\}$ is the only key
+            \item both fds ${b \rightarrow c, b \rightarrow d}$ do not hold any of the rules
         \end{itemize}
     \item If not, provide a decomposition into collections of relations that are in 3NF.
+        \begin{itemize}
+            \item Minimal basis: $G = {b \rightarrow c, b \rightarrow d}$
+            \item candidate subrelations: $bc, bd$
+            \item add key: $ab$
+            \item Combine: $bc, bd \Rightarrow bcd$
+        \end{itemize}
+    $\Rightarrow R_{1}(a,b), R_{2}(b, c, d)$
 \end{enumerate}
 
 \subsection*{} $S(a, b, c, d, e)$ with set of functional dependencies $\{ab \rightarrow c, d \rightarrow c, b \rightarrow de, c \rightarrow d\}$
 \begin{enumerate}
     \item Is the relation in 3NF?
+    \begin{itemize}
+        \item is not in 3NF
+        \item $\{a, b\}$ is the only key
+        \item ${d \rightarrow c, b \rightarrow de, c \rightarrow d}$ do not hold any of the rules
+    \end{itemize}
     \item If not, provide a decomposition into collections of relations that are in 3NF.
+        \begin{itemize}
+            \item Minimal basis: $G = \{b \rightarrow ce, c \rightarrow d, d \rightarrow c\}$
+            \item candidate subrelations: $bc, be, cd$
+            \item add key: $ab$ 
+            \item Combine: $bc, be \Rightarrow bce$
+        \end{itemize}
+    $\Rightarrow R_{1}(a,b), R_{2}(b, c, e), R_{3}(cd)$
 \end{enumerate}
 
 \end{document}
