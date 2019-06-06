@@ -66,14 +66,14 @@ insert into Artifacts values(8, 'artifact1' , 'description_A' , 10 , 2001 , 1 , 
 insert into Artifacts values(9, 'artifact1' , 'description_A' , 10 , 2001 , 1 , 'title1' , '2018-04-01'); 
 insert into Artifacts values(10,'artifact1' , 'description_A' , 10 , 2001 , 1 , 'title1' , '2018-04-01');
 
-insert into ArtifactPaintings values ( 1, 'canvas1'); 
-insert into ArtifactPaintings values ( 2, 'canvas2'); 
-insert into ArtifactPaintings values ( 3, 'canvas3'); 
-insert into ArtifactPaintings values ( 4, 'canvas4'); 
-insert into ArtifactPaintings values ( 5, 'canvas5');
+insert into ArtifactPaintings values ( 1, 'canvas'); 
+insert into ArtifactPaintings values ( 2, 'canvas'); 
+insert into ArtifactPaintings values ( 3, 'oil'); 
+insert into ArtifactPaintings values ( 4, 'oil'); 
+insert into ArtifactPaintings values ( 5, 'oil');
 
-insert into ArtifactSculptures values ( 6, 'braun', 'Holz'); 
-insert into ArtifactSculptures values ( 7, 'grau','Holz'); 
-insert into ArtifactSculptures values ( 8, 'silber','Holz'); 
-insert into ArtifactSculptures values ( 9, 'rot','Holz'); 
-insert into ArtifactSculptures values ( 10, 'weiss','Holz');
+insert into ArtifactSculptures values ( 6, 'brown', 'wood'); 
+insert into ArtifactSculptures values ( 7, 'grey','wood'); 
+insert into ArtifactSculptures values ( 8, 'silver','wood'); 
+insert into ArtifactSculptures values ( 9, 'red','metal'); 
+insert into ArtifactSculptures values ( 10, 'white','metal');
