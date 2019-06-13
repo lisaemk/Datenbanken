@@ -3,6 +3,7 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 *.pdf
+*.zip
 
 # User-specific files
 *.suo
@@ -356,3 +357,4 @@ ASALocalRun/
 
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
+A8/A8.zip
