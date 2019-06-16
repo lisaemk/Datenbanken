@@ -1,19 +1,3 @@
-/*  SCHEMAS
-    Artists(id, name, birthDate, deathDate, bio)
-    Collections(title, topic)
-    Exhibitions(title, topic, room, startDate, endDate)
-    Advertisements(exhibitionTitle, date, mediumName, cost, duration)
-    Media(name, type)
-    InfluencedBy(influenceeId, influencerId)
-    ExhibitedAt(artifactId, exhibitionTitle)
-    Artifacts(id, title, description, value, year, artistId, collectionTitle, collectionDate)
-    ArtifactPaintings(id, canvas)
-    ArtifactSculptures(id, material, color)
-*/
-
-DROP DATABASE IF EXISTS Museum;
-CREATE DATABASE Museum;
-
 DROP TABLE IF EXISTS Artifacts;
 CREATE TABLE Artifacts (
     id INTEGER PRIMARY KEY,canvasid

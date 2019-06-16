@@ -16,13 +16,13 @@ CREATE TABLE Exhibitions (
     topic VARCHAR(50) NOT NULL,
     room VARCHAR(10) NOT NULL,
     startDate DATE NOT NULL,
-    endDate DATE CHECK (startDate < endDate OR endDate = NULL));
+    endDate DATE CHECK (startDate < endDate OR endDate is NULL));
 
 CREATE TABLE Artists (
     id INTEGER PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     birthDate DATE,
-    deathDate DATE CHECK (birthDate < deathDate OR endDate = NULL),
+    deathDate DATE CHECK (birthDate < deathDate OR endDate is NULL),
     bio TEXT);
 
 -- 2. Adding an unavailable artifact to an exhibition is not allowed if the dates of the two exhibitions overlap.
@@ -42,7 +42,7 @@ CREATE TRIGGER ArtifactsOverlappingExhibitons
 -- 3. When a collection is deleted, all its artifacts should be automatically moved to the special collections 
 --    with title ”General paintings” and ”General sculptures”, according to their type.
 CREATE TRIGGER lostCollection
-    AFTER DELETE ON Collections
+    BEFORE DELETE ON Collections
     REFERENCING OLD ROW AS oldcol
     FOR EACH ROW
     UPDATE FROM Artifacts SET collectionTitle = 'General paintings'
