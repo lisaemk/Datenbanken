@@ -1,0 +1,22 @@
+SET profiling = 1;
+SELECT * FROM R WHERE a = 36011 AND b < 1000;
+SELECT * FROM R WHERE a < 1000 AND b = 310664; 
+SELECT avg(c) FROM R GROUP BY a,b;
+SELECT DISTINCT a,b FROM R WHERE a < 1000;
+SHOW PROFILES;
+
+CREATE INDEX firstIndex ON R(a, b);
+DROP INDEX firstIndex;
+SHOW PROFILES;
+
+CREATE INDEX secondIndex ON R(b, a);
+DROP INDEX secondIndex;
+SHOW PROFILES;
+
+CREATE INDEX thirdIndex ON R(a, b, c)
+DROP INDEX thirdIndex;
+SHOW PROFILES;
+
+CREATE INDEX fourthIndex ON R(a);
+DROP INDEX fourthIndex;
+SHOW PROFILES;
