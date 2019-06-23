@@ -1,0 +1,43 @@
+\documentclass{article}
+\usepackage{parskip}
+\usepackage[utf8]{inputenc}
+\usepackage{titlesec}
+\usepackage[a4paper,top=2cm, bottom=2cm]{geometry}
+
+\begin{document}
+\section{Task}
+    The table should be clustered and joined on the same attribute. 
+    Otherwise it is like an unclustered table for a join, because no order is on the attribute the join is performed.
+    \subsection{smaller clustered, larger unclustered}
+        outer: smaller clustered
+
+        inner: larger unclustered
+
+        With the cluster index access the first record of the join attribute. 
+        Then only load the records of this attribute into the Main Memory Buffer.
+        For each block in the Main Memorybuffer scan the entire inner (unclustered) table as in the slides. 
+        Load one record into the Main Memory und spill into the Outputtable if it matches
+    \subsection{larger clustered, smaller unclustered}
+        outer: smaller unclustered 
+
+        inner: larger clustered
+        
+        The outer (unclustered) table should be loaded into the Main Memory Buffer. 
+        For each block of the outer table scan the inner table only on the attribute to join. 
+        And spill when full. It is the same process as in the slides, but instead of scanning the entire inner table, 
+        you can access the first block of the search key in a clustered table.
+
+\section{Task}
+    \subsection{clustered index}
+        first block access with cluster index and every block after it because it is a range query
+
+        number of I/Os for $\sigma_{\alpha>V}(R) = (B(R)>\alpha)$ 
+    \subsection{unclustered index}
+        access every block in R where index fits the range query
+
+        number of I/Os for $\sigma_{\alpha>V}(R) = (B(R) > \alpha)$
+    \subsection{without index}
+        Every block must be read
+
+        number of I/Os for $\sigma_{\alpha>V}(R) = B(R)$    
+\end{document}
