@@ -2,9 +2,31 @@
 \usepackage{parskip}
 \usepackage[utf8]{inputenc}
 \usepackage{titlesec}
+\usepackage{multirow}
 \usepackage[a4paper,top=2cm, bottom=2cm]{geometry}
 
 \begin{document}
 \section{Task}
+Undo/No-Redo
 
+\begin{center}
+    
+    \begin{tabular}{| c | c c c c c c c c l |}
+        \hline
+        \multirow{2}{*}{} &
+        \multicolumn{2}{c}{actions} & 
+        \multicolumn{2}{c}{variables} & 
+        \multicolumn{2}{c}{in memory} & 
+        \multicolumn{2}{c}{on disk} & 
+        \multirow{2}{*}{Log}\\
+        & T1 & T2 & a & b & A & B & A & B & \\
+        \hline
+        1 & & & & & & & & & T1 starts\\
+        1 & & & & & & & & & T1 commits\\
+        1 & & & & & & & & & T2 starts\\
+        1 & & & & & & & & & T2 commits\\
+        \hline
+    \end{tabular}
+\end{center}
+    
 \end{document}
